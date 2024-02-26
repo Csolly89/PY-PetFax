@@ -1,5 +1,8 @@
 from flask import Flask
 from flask_migrate import Migrate
+from . import models
+from . import pet
+from . import fact
 
 def create_app():
     app = Flask(__name__)
@@ -7,7 +10,6 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:batman89@localhost:5432/petfax"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    from . import models
     models.db.init_app(app)
     migrate = Migrate(app, models.db)
 
@@ -15,7 +17,7 @@ def create_app():
     def index():
         return "Hello, this is PetFax"
     
-    from . import pets
-    app.register_blueprint(pets.bp)
+    app.register_blueprint(pet.bp)
+    app.register_blueprint(fact.bp)
 
     return app

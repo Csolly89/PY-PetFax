@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetFax | Submit Facts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <H1>Submit Fax</H1>
+        <div class="callout">
+            Know something fun about animals? We want to hear it!
+        </div>
+        <div class="facts-container">
+            <form action="/facts" method="POST">
+                <label for="submitter">
+                    <H2>Your Name</H2>
+                </label>
+                <input name="submitter" type="text">
+                <br />
+                <label for="fact">
+                    <H2>Fun Fact</H2>
+                </label>
+                <textarea name="fact"></textarea>
+                <br />
+                <input type="submit" value="Submit the Fact">
+            </form>
+        </div>
+        <a href="/pets">Go back</a>
+    </div>
+</body>
+
+</html>
